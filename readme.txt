@@ -54,9 +54,13 @@ Upload the `/simple-feed-stats/` directory to your `/plugins/` folder and activa
 
 **Shortcodes**
 
-`[sfs_subscriber_count]` - displays feed count as plain-text number
+Display feed count as plain-text number:
 
-`[sfs_count_badge]` - displays feed stats with a FeedBurner-style badge
+`[sfs_subscriber_count]`
+
+Display feed stats with a FeedBurner-style badge:
+
+`[sfs_count_badge]`
 
 See the plugin settings page for more infos.
 
