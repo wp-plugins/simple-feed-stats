@@ -18,7 +18,7 @@ Simple Feed Stats makes it easy to track your feeds, add custom content, and dis
 
 == Description ==
 
-Simple Feed Stats (SFS) tracks your feeds automatically using a variety of methods, and provides a wealth of tools and options for further configuration and management. Also displays your subscriber count via template tag or shortcode. Fully configurable. Visit the "Simple Feed Stats" settings page for stats, tools, and more info.
+[Simple Feed Stats](http://perishablepress.com/simple-feed-stats/) (SFS) tracks your feeds automatically using a variety of methods, and provides a wealth of tools and options for further configuration and management. Also displays your subscriber count via template tag or shortcode. Fully configurable. Visit the "Simple Feed Stats" settings page for stats, tools, and more info.
 
 **Features**
 
