@@ -22,20 +22,20 @@ Simple Feed Stats makes it easy to track your feeds, add custom content, and dis
 
 **Features**
 
-* Dashboard widget Ð provides quick overview of your feed stats
-* Custom feed content Ð embellish your feed with custom graphics, markup, &amp; text content
-* Custom feed count Ð display any number or text for your feed count
-* Custom CSS Ð use your own styles to customize your feed stats
-* Clear, reset, restore, delete Ð options to clear the cache, reset your stats, restore default settings, and delete the SFS database table
+* Dashboard widget - provides quick overview of your feed stats
+* Custom feed content - embellish your feed with custom graphics, markup, &amp; text content
+* Custom feed count - display any number or text for your feed count
+* Custom CSS - use your own styles to customize your feed stats
+* Clear, reset, restore, delete - options to clear the cache, reset your stats, restore default settings, and delete the SFS database table
 
 **Tracking methods**
 
 Simple Feed Stats provides three four different ways to track your feeds:
 
-* Default tracking Ð tracks directly via feed request
-* Custom tracking Ð tracks via embedded post image
-* Alternate tracking Ð tracks via embedded feed image
-* Open tracking Ð open tracking via embedded image
+* Default tracking - tracks directly via feed request
+* Custom tracking - tracks via embedded post image
+* Alternate tracking - tracks via embedded feed image
+* Open tracking - open tracking via embedded image
 
 **Collected data**
 
