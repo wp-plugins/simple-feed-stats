@@ -24,7 +24,7 @@ if(isset($_GET["sfs_tracking"])) {
 	$feed_coms_atom = get_bloginfo('comments_atom_url'); // used for Atom comments
 	$feed_coms_rdf = get_bloginfo('comments_rss2_url') . 'rdf/'; // used for RDF comments (see $feed_rdf)
 
-	$wp_feeds = array($feed_rdf, $feed_rss, $feed_rss2, $feed_atom, $feed_coms, $feed_coms_atom, $feed_coms_rdf);
+	$wp_feeds = array($feed_rdf, $feed_rss2, $feed_atom, $feed_coms, $feed_coms_atom, $feed_coms_rdf); // removed $feed_rss
 	$table = $wpdb->prefix . 'simple_feed_stats';
 	if (!$referer) $referer = 'blank';
 

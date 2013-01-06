@@ -5,13 +5,13 @@
 	Description: Tracks feeds, displays subscriber counts, custom feed content, and much more.
 	Author: Jeff Starr
 	Author URI: http://monzilla.biz/
-	Version: 20121031
+	Version: 20130104
 	Usage: Visit the "Simple Feed Stats" settings page for stats, tools, and more info.
 	License: GPL v2
 */
 
 // set version
-$sfs_version = '20121031';
+$sfs_version = '20130104';
 
 // get options
 $options = get_option('sfs_options');
@@ -95,7 +95,7 @@ function simple_feed_stats() {
 		$feed_coms_atom = get_bloginfo('comments_atom_url'); // used for Atom comments
 		$feed_coms_rdf = get_bloginfo('comments_rss2_url') . 'rdf/'; // used for RDF comments (see $feed_rdf)
 
-		$wp_feeds = array($feed_rdf, $feed_rss, $feed_rss2, $feed_atom, $feed_coms, $feed_coms_atom, $feed_coms_rdf);
+		$wp_feeds = array($feed_rdf, $feed_rss2, $feed_atom, $feed_coms, $feed_coms_atom, $feed_coms_rdf); // removed $feed_rss
 
 		if ($request == $feed_rdf) {
 			$type = 'RDF';
@@ -347,12 +347,27 @@ function add_querystring_var($url, $key, $value) {
 }
 
 // truncate() by David Duong: shorten string & add ellipsis 
-function truncate($string, $max = 50, $rep = '') {
+function sfs_truncate($string, $max = 50, $rep = '') {
     $leave = $max - strlen ($rep);
     return substr_replace($string, $rep, $leave);
 }
 
-// display stats template tag
+// display total stats template tag
+function sfs_display_total_count() {
+	$options = get_option('sfs_options'); 
+	if (is_multisite()) {
+		$all_count = get_site_transient('all_count');
+	} else {
+		$all_count = get_transient('all_count');	
+	}
+	if ($all_count) {
+		echo $all_count;
+	} else {
+		echo '0';
+	}
+}
+
+// display daily stats template tag
 function sfs_display_subscriber_count() {
 	$options = get_option('sfs_options'); 
 	if ($options['sfs_custom_enable'] == 1) {
@@ -366,7 +381,7 @@ function sfs_display_subscriber_count() {
 		if ($feed_count) {
 			echo $feed_count;
 		} else {
-			echo '0';	
+			echo '0';
 		}
 	}
 }
@@ -386,8 +401,40 @@ function sfs_subscriber_count() {
 		if ($feed_count) {
 			return $feed_count;
 		} else {
-			return '0';	
+			return '0';
 		}
+	}
+}
+
+// display daily RSS2 stats shortcode
+add_shortcode('sfs_rss2_count','sfs_rss2_count');
+function sfs_rss2_count() { 
+	$options = get_option('sfs_options'); 
+	if (is_multisite()) {
+		$feed_count = get_site_transient('rss2_count');
+	} else {
+		$feed_count = get_transient('rss2_count');	
+	}
+	if ($feed_count) {
+		return $feed_count;
+	} else {
+		return '0';
+	}
+}
+
+// display daily comment stats shortcode
+add_shortcode('sfs_comments_count','sfs_comments_count');
+function sfs_comments_count() {
+	$options = get_option('sfs_options'); 
+	if (is_multisite()) {
+		$feed_count = get_site_transient('comment_count');
+	} else {
+		$feed_count = get_transient('comment_count');	
+	}
+	if ($feed_count) {
+		return $feed_count;
+	} else {
+		return '0';
 	}
 }
 
@@ -463,6 +510,68 @@ function sfs_feed_content($content) {
 if (($options['sfs_feed_content_before'] !== '') || ($options['sfs_feed_content_after'] !== '')) {
 	add_filter('the_content', 'sfs_feed_content');
 	add_filter('the_excerpt', 'sfs_feed_content');
+}
+
+// add custom time to cron
+add_filter('cron_schedules', 'filter_cron_schedules');
+function filter_cron_schedules($param) {
+	return array('three_minutes' => array(
+		'interval' => 180, // seconds
+		'display'  => __('Every 3 minutes') 
+	));
+}
+// cron for caching counts
+add_action('wp', 'sfs_cron_activation');
+function sfs_cron_activation() {
+	if (!wp_next_scheduled('sfs_cron_cache')) {
+		wp_schedule_event(time(), 'twicedaily', 'sfs_cron_cache'); // hourly, daily, twicedaily, three_minutes
+	}
+}
+// cache feed counts
+add_action('sfs_cron_cache', 'sfs_cache_data');
+function sfs_cache_data() {
+	global $wpdb;
+	//$current_date = date("Y-m-d H:i:s"); // date("Y-m-d")
+
+	// daily stats
+	$current_stats = mysql_query("SELECT COUNT(*) FROM " . $wpdb->prefix."simple_feed_stats WHERE cur_timestamp BETWEEN TIMESTAMP(DATE_SUB(NOW(), INTERVAL 1 DAY)) AND NOW()"); // TYPE != 'Comments'
+	$current_stats = mysql_fetch_row($current_stats);
+	$current_stats = $current_stats[0];
+
+	// all-time stats
+	$all_stats = mysql_query("SELECT COUNT(*) FROM " . $wpdb->prefix."simple_feed_stats");
+	$all_stats = mysql_fetch_row($all_stats);
+	$all_stats = $all_stats[0];
+
+	// daily RSS2 stats
+	$rss2_stats = mysql_query("SELECT COUNT(*) FROM " . $wpdb->prefix."simple_feed_stats WHERE type='RSS2' AND cur_timestamp BETWEEN TIMESTAMP(DATE_SUB(NOW(), INTERVAL 1 DAY)) AND NOW()");
+	$rss2_stats = mysql_fetch_row($rss2_stats);
+	$rss2_stats = $rss2_stats[0];
+
+	// daily comment stats
+	$comment_stats = mysql_query("SELECT COUNT(*) FROM " . $wpdb->prefix."simple_feed_stats WHERE type='Comments' AND cur_timestamp BETWEEN TIMESTAMP(DATE_SUB(NOW(), INTERVAL 1 DAY)) AND NOW()");
+	$comment_stats = mysql_fetch_row($comment_stats);
+	$comment_stats = $comment_stats[0];
+
+	if (is_multisite()) {
+		set_site_transient('feed_count', $current_stats, 60*60*24); // 12 hour cache 60*60*12 , 24 hour cache = 60*60*24
+		$feed_count = get_site_transient('feed_count');
+		set_site_transient('all_count', $all_stats, 60*60*24); // 12 hour cache 60*60*12 , 24 hour cache = 60*60*24
+		$all_count = get_site_transient('all_count');
+		set_site_transient('rss2_count', $rss2_stats, 60*60*24); // 12 hour cache 60*60*12 , 24 hour cache = 60*60*24
+		$rss2_count = get_site_transient('rss2_count');
+		set_site_transient('comment_count', $comment_stats, 60*60*24); // 12 hour cache 60*60*12 , 24 hour cache = 60*60*24
+		$comment_count = get_site_transient('comment_count');
+	} else {
+		set_transient('feed_count', $current_stats, 60*60*24); // 12 hour cache 60*60*12 , 24 hour cache = 60*60*24
+		$feed_count = get_transient('feed_count');
+		set_transient('all_count', $all_stats, 60*60*24); // 12 hour cache 60*60*12 , 24 hour cache = 60*60*24
+		$all_count = get_transient('all_count');
+		set_transient('rss2_count', $rss2_stats, 60*60*24); // 12 hour cache 60*60*12 , 24 hour cache = 60*60*24
+		$rss2_count = get_transient('rss2_count');
+		set_transient('comment_count', $comment_stats, 60*60*24); // 12 hour cache 60*60*12 , 24 hour cache = 60*60*24
+		$comment_count = get_transient('comment_count');
+	}
 }
 
 // sfs dashboard widget 
@@ -619,33 +728,9 @@ function sfs_render_form() {
 		}
 	}
 	if (isset($filter)) {
-		$sql = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".$wpdb->prefix."simple_feed_stats ORDER BY $filter ASC LIMIT $offset, $numresults"));
+		$sql = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".$wpdb->prefix."simple_feed_stats ORDER BY %s ASC LIMIT %d, %d", $filter, $offset, $numresults));
 	} else {
-		$sql = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".$wpdb->prefix."simple_feed_stats ORDER BY id DESC LIMIT $offset, $numresults"));
-	}
-
-	// daily count
-	//$current_date = date("Y-m-d H:i:s"); // date("Y-m-d")
-	$current_stats = mysql_query("SELECT COUNT(*) FROM " . $wpdb->prefix."simple_feed_stats WHERE cur_timestamp BETWEEN TIMESTAMP(DATE_SUB(NOW(), INTERVAL 1 DAY)) AND NOW()"); // TYPE != 'Comments'
-	$current_stats = mysql_fetch_row($current_stats);
-	$current_stats = $current_stats[0];
-
-	// all-time count
-	$all_stats = mysql_query("SELECT COUNT(*) FROM " . $wpdb->prefix."simple_feed_stats");
-	$all_stats = mysql_fetch_row($all_stats);
-	$all_stats = $all_stats[0];
-
-	// cache feed count
-	if (is_multisite()) {
-		set_site_transient('feed_count', $current_stats, 60*60*24); // 12 hour cache 60*60*12 , 24 hour cache = 60*60*24
-		$feed_count = get_site_transient('feed_count');
-		set_site_transient('all_count', $all_stats, 60*60*24); // 12 hour cache 60*60*12 , 24 hour cache = 60*60*24
-		$all_count = get_site_transient('all_count');
-	} else {
-		set_transient('feed_count', $current_stats, 60*60*24); // 12 hour cache 60*60*12 , 24 hour cache = 60*60*24
-		$feed_count = get_transient('feed_count');
-		set_transient('all_count', $all_stats, 60*60*24); // 12 hour cache 60*60*12 , 24 hour cache = 60*60*24
-		$all_count = get_transient('all_count');
+		$sql = $wpdb->get_results($wpdb->prepare("SELECT * FROM ".$wpdb->prefix."simple_feed_stats ORDER BY id DESC LIMIT %d, %d", $offset, $numresults));
 	}
 
 	// clear cache
@@ -654,10 +739,15 @@ function sfs_render_form() {
 			if (is_multisite()) {
 				delete_site_transient('feed_count');
 				delete_site_transient('all_count');
+				delete_site_transient('rss2_count');
+				delete_site_transient('comments_count');
 			} else {
 				delete_transient('feed_count');
 				delete_transient('all_count');
+				delete_transient('rss2_count');
+				delete_transient('comments_count');
 			}
+			sfs_cache_data();
 		} 
 	} ?>
 
@@ -701,7 +791,7 @@ function sfs_render_form() {
 
 			.sfs_info td { padding: 5px 10px; }
 
-		.button-primary { margin: 15px; }
+		#sfs-admin .button-primary { margin: 15px; }
 		.sfs-list { margin: 15px 15px 25px 45px; }
 		.sfs-list li { margin: 10px 0; list-style-type: disc; }
 		#sfs-current { width: 100%; height: 250px; overflow: hidden; }
@@ -879,7 +969,7 @@ function sfs_render_form() {
 										<td class="sfs-details">
 											<div class="sfs-stats-referrer"><strong><?php _e('Referrer'); ?>:</strong> <?php echo $s->referer; ?></div>
 											<div class="sfs-stats-request"><strong><?php _e('Request'); ?>:</strong> <?php echo $s->request; ?></div>
-											<div class="sfs-stats-agent"><strong><?php _e('User Agent'); ?>:</strong> <?php echo truncate($s->agent, 175, ''); ?></div>
+											<div class="sfs-stats-agent"><strong><?php _e('User Agent'); ?>:</strong> <?php echo sfs_truncate($s->agent, 175, ''); ?></div>
 										</td>
 									</tr>
 									<?php } ?>
@@ -904,7 +994,7 @@ function sfs_render_form() {
 				<?php } // end section ?>
 
 				<div id="sfs-count-total" class="postbox">
-					<h3><?php _e('Total Subscriber Count'); ?>: <?php echo $all_count; ?></h3>
+					<h3><?php _e('Total Subscriber Count'); ?>: <?php sfs_display_total_count(); ?></h3>
 					<div class="toggle default-hidden">
 						<p><?php _e('All-time number of subscribers by type (everything in the database)'); ?>:</p>
 						<div class="sfs_table-wrap">
@@ -1118,6 +1208,12 @@ function sfs_render_form() {
 							<br /><code>&lt;?php if(function_exists('sfs_display_count_badge')) sfs_display_count_badge(); ?&gt;</code>
 						</p>
 						<p><?php _e('Alternately, to display a Feedburner-style badge in a post or page, add the following shortcode:'); ?><br /><code>[sfs_count_badge]</code></p>
+
+						<p><strong><?php _e('Display RSS2 stats (plain text)'); ?></strong></p>
+						<p><?php _e('To display your daily RSS2 stats in plain-text, add the following shortcode:'); ?><br /><code>[sfs_rss2_count]</code></p>
+
+						<p><strong><?php _e('Display Comments stats (plain text)'); ?></strong></p>
+						<p><?php _e('To display your daily comments stats in plain-text, add the following shortcode:'); ?><br /><code>[sfs_comments_count]</code></p>
 					</div>
 				</div>
 				<div class="postbox">
@@ -1195,7 +1291,7 @@ function sfs_render_form() {
 					<h3><?php _e('Updates &amp; Info'); ?></h3>
 					<div class="toggle default-hidden">
 						<div id="sfs-current">
-							<iframe src="http://perishablepress.com/current/"></iframe>
+							<iframe src="http://perishablepress.com/current/index-sfs.html"></iframe>
 						</div>
 					</div>
 				</div>
