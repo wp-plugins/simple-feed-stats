@@ -7,11 +7,11 @@ Tags: feed, feeds, stats, statistics, feedburner, tracking, subscribers
 Author URI: http://monzilla.biz/
 Author: Jeff Starr
 Contributors: specialk
-Donate link: http://digwp.com/
+Donate link: http://m0n.co/donate
 Requires at least: 3.4
 Tested up to: 3.5
-Stable tag: 20130104
-Version: 20130104
+Version: 20130715
+Stable tag: trunk
 License: GPLv2 or later
 
 Simple Feed Stats makes it easy to track your feeds, add custom content, and display your feed statistics on your site.
@@ -87,6 +87,21 @@ Display total stats as plain-text:
 
 `<?php if(function_exists('sfs_display_total_count')) sfs_display_total_count(); ?>`
 
+**Testing**
+
+To verify that the plugin is working properly, do the following:
+
+1. Visit the "Your Info / More Info" panel in the plugin's settings
+2. Click on each of "Your feed URLs" and refresh the settings page
+3. In the "Tools and Options" panel, click "clear cache"
+4. Refresh the settings page
+
+After performing these steps, your "Current Feed Stats" and "Total Feed Stats" should both display some numbers, based on the feed URLs that you clicked in step 2. This means that the plugin is working using its default settings. Similar testing should be done for other feed-tracking options. Note that not all tracking methods (or browsers/devices) work for all types of feeds; for example, the "Alt Tracking" method is required to record hits for RDF feeds. 
+
+**Notes**
+
+To update your feed stats at any time (without waiting for the automatic 12-hour interval), click the "clear cache" link in the "Tools and Options" settings panel.
+
 See the plugin settings page for more infos.
 
 == Upgrade Notice ==
@@ -98,6 +113,19 @@ To upgrade, simply upload the new version and you should be good to go.
 Screenshots and more info available at the [SFS Homepage](http://perishablepress.com/simple-feed-stats/).
 
 == Changelog ==
+
+= 20130715 =
+
+* Improved localization support
+* Resolved numerous PHP Warnings
+* Replaced deprecated WP functions
+* Added additional info to readme.txt
+* Removed filter_cron_schedules()
+* Added cleanup of scheduled chron jobs upon deactivation
+* Tightened security of tracker file
+* Added default timezone (UTC)
+* Overview and Updates admin panels toggled open by default
+* General code check n clean
 
 = 20130104 =
 
@@ -126,6 +154,6 @@ To ask a question, visit the [SFS Homepage](http://perishablepress.com/simple-fe
 
 == Donations ==
 
-I created this plugin with love for the WP community. To show support, consider purchasing my new book, [.htaccess made easy](http://htaccessbook.com/), or my WordPress book, [Digging into WordPress](http://digwp.com/).
+I created this plugin with love for the WP community. To show support, consider purchasing one of my books: [The Tao of WordPress](http://wp-tao.com/), [Digging into WordPress](http://digwp.com/), or [.htaccess made easy](http://htaccessbook.com/).
 
 Links, tweets and likes also appreciated. Thanks! :)
