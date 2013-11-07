@@ -9,8 +9,8 @@ Author: Jeff Starr
 Contributors: specialk
 Donate link: http://m0n.co/donate
 Requires at least: 3.4
-Tested up to: 3.5
-Version: 20130715
+Tested up to: 3.7
+Version: 20131106
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -28,6 +28,9 @@ Simple Feed Stats makes it easy to track your feeds, add custom content, and dis
 * Custom CSS - use your own styles to customize your feed stats
 * Shortcodes and template tags to display daily, total, RSS2, and comment stats
 * Clear, reset, restore, delete - options to clear the cache, reset your stats, restore default settings, and delete the SFS database table
+* Automatically tracks custom feeds built with the WordPress API
+* NEW "strict mode" reporting option for more accurate feed count
+* NEW custom key/value tracking parameters
 
 **Tracking methods**
 
@@ -114,6 +117,28 @@ Screenshots and more info available at the [SFS Homepage](http://perishablepress
 
 == Changelog ==
 
+= 20131106 =
+
+* Added uninstall.php file
+* Added "rate this plugin" links
+* Improved "Overview" panel
+* Added line to prevent direct loading of the script
+* Add i18n support
+* Improved database setup: `TIMESTAMP(8)` to `TIMESTAMP`
+* Removed closing `?>` from simple-feed-stats.php
+* Added "strict reporting" option
+* Made some improvements to the settings page
+* Replace `$options` with `$sfs_options`
+* Added custom key/value parameter for "custom" or "alt" tracking methods
+* Fixed filtering of "Feed Statistics"
+* Fixed some PHP notices
+* Cleaned up `simple_feed_stats` function
+* Cleaned up `tracker.php` file
+* Deprecated `$feed_rss` default tracking
+* Improved sanitization of POST vars
+* General code cleanup and maintenance
+* Tested plugin with latest version of WordPress (3.7)
+
 = 20130715 =
 
 * Improved localization support
@@ -149,6 +174,22 @@ Screenshots and more info available at the [SFS Homepage](http://perishablepress
 * 20121010: Initial plugin release
 
 == Frequently Asked Questions ==
+
+Question: "How can I monitor a custom feed, such as one at http://example.com/feed/podcast/"
+
+Answer: If you use WordPress API for the [custom feed template](http://digwp.com/2011/08/custom-feeds/), and include the usual template tags for feeds, the SFS plugin will automatically track the custom feed. 
+
+Question: "What's up with 'strict mode' reporting?"
+
+Answer: It has to do with how SFS reports your feed stats. For example, in normal reporting mode (strict mode = off), each feed request is reported as unique. With strict mode enabled, feed requests are filtered by IP address, so that if Mary requests your comments feed five times per day, it's counted as "1" subscriber rather than "5". It's more accurate, but feed counts are usually lower with strict mode enabled. Note also that SFS still records all requests, so if you're reporting in strict mode the individual request data is still recorded. In other words, strict mode determines how recorded data is reported, not collected.
+
+Question: "How can I use the the custom key/value parameters?"
+
+Answer: If you don't already know, you probably don't need it. Basically it's a requested feature that enables the inclusion of a custom URL parameter (key/value) in either "custom" or "alt" tracking methods. You know, for stuff like Google Analytics. The plan is to introduce the feature, collect more feedback, and then improve it. If you have any ideas, drop a line via the link below.
+
+Question: "The stats are showing zero for the shortcodes and template tags, even though there are requests recorded in the Feed Stats panel. Why?"
+
+Answer: During the first 12 hours, data is collected. Then the cache is refreshed to show the latest stats for the previous 12 hours. If your stats are showing zero or you would just like to update the count, visit the "Tools and Options" panel and click the "Clear cache" link.
 
 To ask a question, visit the [SFS Homepage](http://perishablepress.com/simple-feed-stats/) or [contact me](http://perishablepress.com/contact/).
 
