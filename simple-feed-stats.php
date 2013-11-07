@@ -15,10 +15,6 @@
 
 if (!defined('ABSPATH')) die();
 
-// $wpdb->show_errors();
-$wpdb->hide_errors();
-error_reporting(0);
-
 // i18n
 function sfs_i18n_init() {
 	load_plugin_textdomain('sfs', false, dirname(plugin_basename(__FILE__)) . '/languages');
