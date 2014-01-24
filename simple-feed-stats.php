@@ -6,7 +6,7 @@
 	Author: Jeff Starr
 	Author URI: http://monzilla.biz/
 	Donate link: http://m0n.co/donate
-	Version: 20131106
+	Version: 20140123
 	Usage: Visit the "Simple Feed Stats" settings page for stats, tools, and more info.
 	License: GPL v2
 */
@@ -17,11 +17,11 @@ if (!defined('ABSPATH')) die();
 
 // i18n
 function sfs_i18n_init() {
-	load_plugin_textdomain('sfs', false, dirname(plugin_basename(__FILE__)) . '/languages');
+	load_plugin_textdomain('sfs', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 }
 add_action('plugins_loaded', 'sfs_i18n_init');
 
-$sfs_version = '20131106';
+$sfs_version = '20140123';
 $sfs_options = get_option('sfs_options');
 date_default_timezone_set('UTC');
 
@@ -939,9 +939,9 @@ function sfs_render_form() {
 							<li><?php _e('Visit the SFS Widget in the', 'sfs'); ?> <a href="<?php echo get_admin_url(); ?>"><?php _e('Dashboard', 'sfs'); ?></a> <?php _e('any time for a quick overview.', 'sfs'); ?></li>
 							<li><?php _e('For more information check the', 'sfs'); ?> <a href="<?php echo plugins_url(); ?>/simple-feed-stats/readme.txt">readme.txt</a></li>
 							<li><?php _e('and', 'sfs'); ?> <a href="http://perishablepress.com/simple-feed-stats/"><?php _e('Simple Feed Stats Homepage', 'sfs'); ?></a></li>
-							<li><?php _e('If you like this plugin, please', 'sbs'); ?> 
-								<a href="http://wordpress.org/support/view/plugin-reviews/<?php echo basename(dirname(__FILE__)); ?>?rate=5#postform" title="<?php _e('Click here to rate and review this plugin on WordPress.org', 'sbs'); ?>" target="_blank">
-									<?php _e('rate it at the Plugin Directory', 'sbs'); ?>&nbsp;&raquo;
+							<li><?php _e('If you like this plugin, please', 'sfs'); ?> 
+								<a href="http://wordpress.org/support/view/plugin-reviews/<?php echo basename(dirname(__FILE__)); ?>?rate=5#postform" title="<?php _e('Click here to rate and review this plugin on WordPress.org', 'sfs'); ?>" target="_blank">
+									<?php _e('rate it at the Plugin Directory', 'sfs'); ?>&nbsp;&raquo;
 								</a>
 							</li>
 						</ul>

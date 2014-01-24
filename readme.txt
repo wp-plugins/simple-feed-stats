@@ -9,8 +9,8 @@ Author: Jeff Starr
 Contributors: specialk
 Donate link: http://m0n.co/donate
 Requires at least: 3.4
-Tested up to: 3.7
-Version: 20131106
+Tested up to: 3.8
+Version: 20140123
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -116,6 +116,12 @@ To upgrade, simply upload the new version and you should be good to go.
 Screenshots and more info available at the [SFS Homepage](http://perishablepress.com/simple-feed-stats/).
 
 == Changelog ==
+
+= 20140123 =
+
+* Tested plugin with latest version of WordPress (3.8)
+* Added trailing slash to load_plugin_textdomain()
+* Fixed 3 incorrect _e() tags in core file
 
 = 20131106 =
 
