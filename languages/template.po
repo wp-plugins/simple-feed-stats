@@ -1,0 +1,717 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple Feed Stats\n"
+"POT-Creation-Date: 2014-03-08 14:09-0800\n"
+"PO-Revision-Date: 2014-03-08 14:09-0800\n"
+"Last-Translator: Jeff Starr <http://perishablepress.com/contact/>\n"
+"Language-Team: Monzilla Media <http://perishablepress.com/contact/>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.6\n"
+"X-Poedit-KeywordsList: __;_e;_n\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../simple-feed-stats.php:238
+msgid "Comments for "
+msgstr ""
+
+#: ../simple-feed-stats.php:268
+msgid "Settings"
+msgstr ""
+
+#: ../simple-feed-stats.php:279
+msgid "Click here to rate and review this plugin on WordPress.org"
+msgstr ""
+
+#: ../simple-feed-stats.php:279
+msgid "Rate this plugin"
+msgstr ""
+
+#: ../simple-feed-stats.php:333
+msgid "Disable tracking"
+msgstr ""
+
+#: ../simple-feed-stats.php:333
+msgid "disables all tracking"
+msgstr ""
+
+#: ../simple-feed-stats.php:333
+msgid "Note: no stats or data will be deleted."
+msgstr ""
+
+#: ../simple-feed-stats.php:337
+msgid "Default tracking"
+msgstr ""
+
+#: ../simple-feed-stats.php:337
+msgid "tracks via feed requests"
+msgstr ""
+
+#: ../simple-feed-stats.php:337
+msgid "Recommended if serving your own feeds."
+msgstr ""
+
+#: ../simple-feed-stats.php:341
+msgid "Custom tracking"
+msgstr ""
+
+#: ../simple-feed-stats.php:341
+msgid "tracks via embedded post image"
+msgstr ""
+
+#: ../simple-feed-stats.php:341
+msgid ""
+"Recommended if redirecting your feed to FeedBurner (using Full-text feeds "
+"only; use &ldquo;Open Tracking&rdquo; for FeedBurner Summary feeds)."
+msgstr ""
+
+#: ../simple-feed-stats.php:345
+msgid "Alternate tracking"
+msgstr ""
+
+#: ../simple-feed-stats.php:345
+msgid "tracks via embedded feed image"
+msgstr ""
+
+#: ../simple-feed-stats.php:345
+msgid "Experimental tracking method."
+msgstr ""
+
+#: ../simple-feed-stats.php:349
+msgid "Open tracking"
+msgstr ""
+
+#: ../simple-feed-stats.php:349
+msgid "open tracking via image"
+msgstr ""
+
+#: ../simple-feed-stats.php:349
+msgid ""
+"Track any feed or web page by using the open-tracking URL as the <code>src</"
+"code> for any <code>img</code> tag. Tip: this is a good alternate method of "
+"tracking your FeedBurner feeds."
+msgstr ""
+
+#: ../simple-feed-stats.php:474
+msgid "readers"
+msgstr ""
+
+#: ../simple-feed-stats.php:608 ../simple-feed-stats.php:858
+msgid "Current Subscriber Count"
+msgstr ""
+
+#: ../simple-feed-stats.php:613 ../simple-feed-stats.php:871
+#: ../simple-feed-stats.php:993
+msgid "RDF"
+msgstr ""
+
+#: ../simple-feed-stats.php:614 ../simple-feed-stats.php:872
+#: ../simple-feed-stats.php:994
+msgid "RSS2"
+msgstr ""
+
+#: ../simple-feed-stats.php:615 ../simple-feed-stats.php:873
+#: ../simple-feed-stats.php:995
+msgid "Atom"
+msgstr ""
+
+#: ../simple-feed-stats.php:616 ../simple-feed-stats.php:874
+#: ../simple-feed-stats.php:996
+msgid "Comments"
+msgstr ""
+
+#: ../simple-feed-stats.php:629
+msgid "More stats, tools, and options &raquo;"
+msgstr ""
+
+#: ../simple-feed-stats.php:816
+msgid "Simple Feed Stats"
+msgstr ""
+
+#: ../simple-feed-stats.php:819
+msgid "Cache cleared"
+msgstr ""
+
+#: ../simple-feed-stats.php:823
+msgid "All feed stats deleted"
+msgstr ""
+
+#: ../simple-feed-stats.php:826
+msgid "Toggle all panels"
+msgstr ""
+
+#: ../simple-feed-stats.php:830
+msgid "Overview"
+msgstr ""
+
+#: ../simple-feed-stats.php:834
+msgid ""
+"Simple Feed Stats (SFS) makes it easy to track your feeds and display a "
+"subscriber count on your website."
+msgstr ""
+
+#: ../simple-feed-stats.php:835
+msgid ""
+"It also enables you to add custom content to the header and footer of each "
+"feed item."
+msgstr ""
+
+#: ../simple-feed-stats.php:836
+msgid ""
+"SFS tracks your feeds <em>automatically</em> and displays the statistics on "
+"<em>this</em> page."
+msgstr ""
+
+#: ../simple-feed-stats.php:837
+msgid "Here are some useful shortcuts to get started with Simple Feed Stats:"
+msgstr ""
+
+#: ../simple-feed-stats.php:840
+msgid "To customize and manage SFS, visit"
+msgstr ""
+
+#: ../simple-feed-stats.php:840 ../simple-feed-stats.php:1016
+msgid "Tools &amp; Options"
+msgstr ""
+
+#: ../simple-feed-stats.php:841
+msgid "To display your subscriber count, visit"
+msgstr ""
+
+#: ../simple-feed-stats.php:841 ../simple-feed-stats.php:1203
+msgid "Template Tags &amp; Shortcodes"
+msgstr ""
+
+#: ../simple-feed-stats.php:842
+msgid "Visit the SFS Widget in the"
+msgstr ""
+
+#: ../simple-feed-stats.php:842
+msgid "Dashboard"
+msgstr ""
+
+#: ../simple-feed-stats.php:842
+msgid "any time for a quick overview"
+msgstr ""
+
+#: ../simple-feed-stats.php:843
+msgid "For more info check the"
+msgstr ""
+
+#: ../simple-feed-stats.php:844
+msgid "and"
+msgstr ""
+
+#: ../simple-feed-stats.php:844 ../simple-feed-stats.php:1267
+msgid "Simple Feed Stats Homepage"
+msgstr ""
+
+#: ../simple-feed-stats.php:846
+msgid "If you like this plugin, please"
+msgstr ""
+
+#: ../simple-feed-stats.php:847
+msgid "Click here to rate and review this plugin"
+msgstr ""
+
+#: ../simple-feed-stats.php:848
+msgid "rate it at the Plugin Directory"
+msgstr ""
+
+#: ../simple-feed-stats.php:861
+msgid "Subscribers by Type"
+msgstr ""
+
+#: ../simple-feed-stats.php:862
+msgid ""
+"Note: the number reported for the &ldquo;Current Subscriber Count&rdquo; "
+"(shown above) is updated every 24 hours. "
+msgstr ""
+
+#: ../simple-feed-stats.php:863
+msgid ""
+"The &ldquo;Subscribers by Type&rdquo; data cover the most recent 24 hours "
+"and may not equal the current subscriber count. "
+msgstr ""
+
+#: ../simple-feed-stats.php:864
+msgid ""
+"Tip: you can manually refresh the &ldquo;Current Subscriber Count&rdquo; to "
+"reflect current numbers by clearing the cache (see Tools &amp; Options). "
+msgstr ""
+
+#: ../simple-feed-stats.php:875 ../simple-feed-stats.php:997
+msgid "Open"
+msgstr ""
+
+#: ../simple-feed-stats.php:876 ../simple-feed-stats.php:998
+msgid "Other"
+msgstr ""
+
+#: ../simple-feed-stats.php:894
+msgid "Feed Statistics"
+msgstr ""
+
+#: ../simple-feed-stats.php:899
+msgid "Feed stats filtered by"
+msgstr ""
+
+#: ../simple-feed-stats.php:900
+msgid "reset"
+msgstr ""
+
+#: ../simple-feed-stats.php:907
+msgid "Filter data by.."
+msgstr ""
+
+#: ../simple-feed-stats.php:908
+msgid "Log Time"
+msgstr ""
+
+#: ../simple-feed-stats.php:909
+msgid "Feed Type"
+msgstr ""
+
+#: ../simple-feed-stats.php:910
+msgid "IP Address"
+msgstr ""
+
+#: ../simple-feed-stats.php:911 ../simple-feed-stats.php:970
+msgid "User Agent"
+msgstr ""
+
+#: ../simple-feed-stats.php:912
+msgid "Tracking"
+msgstr ""
+
+#: ../simple-feed-stats.php:913 ../simple-feed-stats.php:968
+msgid "Referrer"
+msgstr ""
+
+#: ../simple-feed-stats.php:924 ../simple-feed-stats.php:925
+msgid "Page "
+msgstr ""
+
+#: ../simple-feed-stats.php:934
+msgid "Previous page"
+msgstr ""
+
+#: ../simple-feed-stats.php:938
+msgid "Next page"
+msgstr ""
+
+#: ../simple-feed-stats.php:945 ../simple-feed-stats.php:952
+msgid "ID"
+msgstr ""
+
+#: ../simple-feed-stats.php:946 ../simple-feed-stats.php:953
+msgid "Meta"
+msgstr ""
+
+#: ../simple-feed-stats.php:947 ../simple-feed-stats.php:954
+msgid "Details"
+msgstr ""
+
+#: ../simple-feed-stats.php:963
+msgid "tracking"
+msgstr ""
+
+#: ../simple-feed-stats.php:969
+msgid "Request"
+msgstr ""
+
+#: ../simple-feed-stats.php:983
+msgid "Total Subscriber Count"
+msgstr ""
+
+#: ../simple-feed-stats.php:986
+msgid "All-time number of subscribers by type"
+msgstr ""
+
+#: ../simple-feed-stats.php:987
+msgid ""
+"Note: the number reported for the &ldquo;Total Subscriber Count&rdquo; "
+"(shown above) includes everything recorded in the database and is the sum "
+"total of the following data."
+msgstr ""
+
+#: ../simple-feed-stats.php:1023
+msgid "Tracking method"
+msgstr ""
+
+#: ../simple-feed-stats.php:1043
+msgid "Open Tracking URL"
+msgstr ""
+
+#: ../simple-feed-stats.php:1046
+msgid ""
+"For use with the &ldquo;Open Tracking&rdquo; method. Use this tracking URL "
+"as the <code>src</code> for any <code>img</code>:"
+msgstr ""
+
+#: ../simple-feed-stats.php:1047
+msgid ""
+"Tip: SFS Open Tracking is another way to track your FeedBurner feeds. Visit "
+"<code>m0n.co/a</code> for details (or google &ldquo;SFS Open "
+"Tracking&rdquo;)."
+msgstr ""
+
+#: ../simple-feed-stats.php:1050
+msgid "Example code:"
+msgstr ""
+
+#: ../simple-feed-stats.php:1055
+msgid "Open Tracking Image"
+msgstr ""
+
+#: ../simple-feed-stats.php:1058
+msgid ""
+"For use with the &ldquo;Open Tracking&rdquo; method. Here you may specify "
+"the URL for the tracking image:"
+msgstr ""
+
+#: ../simple-feed-stats.php:1059
+msgid ""
+"Tip: this is the URL of the image that will be returned as the <code>src</"
+"code> for the open-tracking image. Use text/numbers only, no markup."
+msgstr ""
+
+#: ../simple-feed-stats.php:1062
+msgid "Current image being used for Open Tracking:"
+msgstr ""
+
+#: ../simple-feed-stats.php:1066
+msgid "Enable strict reporting?"
+msgstr ""
+
+#: ../simple-feed-stats.php:1069
+msgid ""
+"Check this box to enable strict reporting of feed statistics. Note: this "
+"will result in a more accurate reporting of feed stats; \n"
+"\t\t\t\t\t\t\t\t\t\t\t\thowever, if you have been using SFS for awhile, you "
+"will notice that the feed count reported in strict mode is lower than "
+"reported previously. \n"
+"\t\t\t\t\t\t\t\t\t\t\t\tTip: after changing this option, click the &ldquo;"
+"Clear the cache&rdquo; link below to reset the cache. Default setting: off "
+"(unchecked)."
+msgstr ""
+
+#: ../simple-feed-stats.php:1080
+msgid "Custom count"
+msgstr ""
+
+#: ../simple-feed-stats.php:1082
+msgid "Text/numbers only, no markup."
+msgstr ""
+
+#: ../simple-feed-stats.php:1083
+msgid ""
+"Tip: use the current subscriber count for a day or so after resetting the "
+"feed stats (check the next box to enable)."
+msgstr ""
+
+#: ../simple-feed-stats.php:1087
+msgid "Enable custom count?"
+msgstr ""
+
+#: ../simple-feed-stats.php:1089
+msgid "Select to display your custom feed count instead of the recorded value."
+msgstr ""
+
+#: ../simple-feed-stats.php:1097
+msgid "Custom key/value"
+msgstr ""
+
+#: ../simple-feed-stats.php:1101
+msgid "Custom key"
+msgstr ""
+
+#: ../simple-feed-stats.php:1104
+msgid "Custom value"
+msgstr ""
+
+#: ../simple-feed-stats.php:1108
+msgid ""
+"Add custom key/value parameter for either &ldquo;custom&rdquo; or &ldquo;"
+"alt&rdquo; tracking methods. \n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\tImportant: include only alphanumeric characters, "
+"underscores, and hyphens. Leave blank to disable."
+msgstr ""
+
+#: ../simple-feed-stats.php:1111
+msgid ""
+"Including a custom key/value in the tracking URL can be used with 3rd-party "
+"services such as Google Analytics. \n"
+"\t\t\t\t\t\t\t\t\t\t\t\t\tThis feature will be extended in future versions, "
+"send feedback with any requests."
+msgstr ""
+
+#: ../simple-feed-stats.php:1122
+msgid "Number of results per page"
+msgstr ""
+
+#: ../simple-feed-stats.php:1124
+msgid "Applies to the back-end statistics (this page only)."
+msgstr ""
+
+#: ../simple-feed-stats.php:1132
+msgid "Custom CSS for count badge"
+msgstr ""
+
+#: ../simple-feed-stats.php:1135
+msgid "CSS/text only, no markup."
+msgstr ""
+
+#: ../simple-feed-stats.php:1136
+msgid ""
+"Tip: see the &ldquo;Template Tags &amp; Shortcodes&rdquo; panel for count-"
+"badge shortcode and template tag. \n"
+"\t\t\t\t\t\t\t\t\t\t\t\tDefault styles replicate the Feedburner chicklet. "
+"Leave blank to disable."
+msgstr ""
+
+#: ../simple-feed-stats.php:1145
+msgid "Display before each feed item"
+msgstr ""
+
+#: ../simple-feed-stats.php:1148 ../simple-feed-stats.php:1156
+msgid "Text and basic markup allowed."
+msgstr ""
+
+#: ../simple-feed-stats.php:1149 ../simple-feed-stats.php:1157
+msgid "Tip: you can has shortcodes. Leave blank to disable."
+msgstr ""
+
+#: ../simple-feed-stats.php:1153
+msgid "Display after each feed item"
+msgstr ""
+
+#: ../simple-feed-stats.php:1165
+msgid "Clear the cache"
+msgstr ""
+
+#: ../simple-feed-stats.php:1166
+msgid "Clear cache"
+msgstr ""
+
+#: ../simple-feed-stats.php:1167
+msgid "Tip: refresh this page to renew the cache after clearing."
+msgstr ""
+
+#: ../simple-feed-stats.php:1168
+msgid ""
+"Note: it&rsquo;s safe to clear the cache at any time. WP will automatically "
+"cache fresh data."
+msgstr ""
+
+#: ../simple-feed-stats.php:1172
+msgid "Reset feed stats"
+msgstr ""
+
+#: ../simple-feed-stats.php:1173
+msgid "Reset stats"
+msgstr ""
+
+#: ../simple-feed-stats.php:1174
+msgid "Warning: this will delete all feed stats!"
+msgstr ""
+
+#: ../simple-feed-stats.php:1175
+msgid ""
+"Note: deletes data only. To delete the sfs table, see the &ldquo;Delete "
+"Database Table&rdquo; option (below)."
+msgstr ""
+
+#: ../simple-feed-stats.php:1179
+msgid "Restore default settings"
+msgstr ""
+
+#: ../simple-feed-stats.php:1182
+msgid "Restore default options upon plugin deactivation/reactivation."
+msgstr ""
+
+#: ../simple-feed-stats.php:1183
+msgid ""
+"Tip: leave this option unchecked to remember your settings. Or, to go ahead "
+"and restore all default options, check the box, save your settings, and then "
+"deactivate/reactivate the plugin."
+msgstr ""
+
+#: ../simple-feed-stats.php:1187
+msgid "Delete database table"
+msgstr ""
+
+#: ../simple-feed-stats.php:1190
+msgid "Delete the stats table the next time plugin is deactivated."
+msgstr ""
+
+#: ../simple-feed-stats.php:1191
+msgid ""
+"Tip: leave this option unchecked to keep your feed stats if the plugin is "
+"deactivated. Or, to go ahead and delete the sfs table (and all of its data), "
+"check the box, save your settings, and then deactivate the plugin."
+msgstr ""
+
+#: ../simple-feed-stats.php:1197
+msgid "Save Settings"
+msgstr ""
+
+#: ../simple-feed-stats.php:1205
+msgid "Simple feed count (number/text only)"
+msgstr ""
+
+#: ../simple-feed-stats.php:1206
+msgid ""
+"To display your current subscriber count as simple text, add the following "
+"template tag anywhere in your theme (e.g., sidebar, footer, etc.):"
+msgstr ""
+
+#: ../simple-feed-stats.php:1208
+msgid ""
+"To display your current subscriber count in a Post or Page, add the "
+"following shortcode:"
+msgstr ""
+
+#: ../simple-feed-stats.php:1211
+msgid "Feed count badge (like Feedburner)"
+msgstr ""
+
+#: ../simple-feed-stats.php:1214
+msgid ""
+"To display your stats with a badge that looks like the Feedburner chicklet, "
+"add the following template tag anywhere in your theme:"
+msgstr ""
+
+#: ../simple-feed-stats.php:1215
+msgid ""
+"Tip: visit the &ldquo;Tools &amp; Options&rdquo; panel to style your count "
+"badge with some custom CSS."
+msgstr ""
+
+#: ../simple-feed-stats.php:1219
+msgid ""
+"Alternately, to display a Feedburner-style badge in a post or page, add the "
+"following shortcode:"
+msgstr ""
+
+#: ../simple-feed-stats.php:1222
+msgid "Display RSS2 stats (plain text)"
+msgstr ""
+
+#: ../simple-feed-stats.php:1223
+msgid ""
+"To display your daily RSS2 stats in plain-text, add the following shortcode:"
+msgstr ""
+
+#: ../simple-feed-stats.php:1226
+msgid "Display Comments stats (plain text)"
+msgstr ""
+
+#: ../simple-feed-stats.php:1227
+msgid ""
+"To display your daily comments stats in plain-text, add the following "
+"shortcode:"
+msgstr ""
+
+#: ../simple-feed-stats.php:1232
+msgid "Your Info / More Info"
+msgstr ""
+
+#: ../simple-feed-stats.php:1235
+msgid "Here are some helpful things to know when working with feeds."
+msgstr ""
+
+#: ../simple-feed-stats.php:1236
+msgid ""
+"Tip: to generate some feed data to look at, try clicking on a few of these "
+"links"
+msgstr ""
+
+#: ../simple-feed-stats.php:1255
+msgid "Your feed URLs"
+msgstr ""
+
+#: ../simple-feed-stats.php:1258
+msgid "Content RDF"
+msgstr ""
+
+#: ../simple-feed-stats.php:1259
+msgid "Content RSS2"
+msgstr ""
+
+#: ../simple-feed-stats.php:1260
+msgid "Content Atom"
+msgstr ""
+
+#: ../simple-feed-stats.php:1261
+msgid "Comments RSS2"
+msgstr ""
+
+#: ../simple-feed-stats.php:1262
+msgid "Comments Atom"
+msgstr ""
+
+#: ../simple-feed-stats.php:1265
+msgid "More about WordPress feeds"
+msgstr ""
+
+#: ../simple-feed-stats.php:1268
+msgid "WP Codex: WordPress Feeds"
+msgstr ""
+
+#: ../simple-feed-stats.php:1269
+msgid "What is my WordPress Feed URL?"
+msgstr ""
+
+#: ../simple-feed-stats.php:1270
+msgid "Google/Feedburner"
+msgstr ""
+
+#: ../simple-feed-stats.php:1272
+msgid "Your browser/IP info"
+msgstr ""
+
+#: ../simple-feed-stats.php:1274
+msgid "IP Address:"
+msgstr ""
+
+#: ../simple-feed-stats.php:1275
+msgid "Approx. Time:"
+msgstr ""
+
+#: ../simple-feed-stats.php:1276
+msgid ""
+"Denotes date/time of most recent page-load (useful when monitoring feed "
+"stats)."
+msgstr ""
+
+#: ../simple-feed-stats.php:1278
+msgid "User Agent:"
+msgstr ""
+
+#: ../simple-feed-stats.php:1283
+msgid "Updates &amp; Info"
+msgstr ""
+
+#: ../simple-feed-stats.php:1308
+msgid ""
+"Are you sure you want to delete all the feed stats? (this action cannot be "
+"undone)"
+msgstr ""
+
+#: ../simple-feed-stats.php:1316
+msgid ""
+"Are you sure you want to restore all default options? (this action cannot be "
+"undone)"
+msgstr ""
+
+#: ../simple-feed-stats.php:1327
+msgid ""
+"Are you sure you want to delete the stats table and all of its data? (this "
+"action cannot be undone)"
+msgstr ""

@@ -10,7 +10,7 @@ Contributors: specialk
 Donate link: http://m0n.co/donate
 Requires at least: 3.4
 Tested up to: 3.8
-Version: 20140123
+Version: 20140308
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -116,6 +116,30 @@ To upgrade, simply upload the new version and you should be good to go.
 Screenshots and more info available at the [SFS Homepage](http://perishablepress.com/simple-feed-stats/).
 
 == Changelog ==
+
+= 20140308 =
+
+* Summary: revamped plugin to make better use of the WP API
+* Improved logic for sfs_create_table for better performance
+* Bugfix: removed mysql_real_escape_string from sfs_clean
+* Added is_feed to simple_feed_stats, now hooks at wp
+* Improved localization support, added mo/po templates
+* Rewrote all database calls to use the WP API
+* sfs_require_wp_version only runs on plugin activation
+* sfs_feed_tracking improved logic, refined code
+* Rewrote tracker.php with cleaner code, improved security
+* Replaced default/PHP time/date with WP defaults
+* Completely revamped plugin settings page for latest WP
+* Added some missing transients to uninstall.php
+* Improved default, custom, alt, and open tracking methods
+* Updated feed-tracking XML for Alt Tracking method
+* Replaced word "Custom" for "Open" when displaying stats
+* Removed Firefox-specific conditional tracking
+* Dropped support for WP-deprecated comments RDF feed
+* Dropped support for WP-deprecated RSS1 (RSS) feeds
+* Updated Dashboard widget styles
+* General code check and clean
+* Extensive testing on default WP install
 
 = 20140123 =
 
