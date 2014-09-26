@@ -6,14 +6,14 @@
 	Author: Jeff Starr
 	Author URI: http://monzilla.biz/
 	Donate link: http://m0n.co/donate
-	Version: 20140308
+	Version: 20140925
 	Usage: Visit the "Simple Feed Stats" settings page for stats, tools, and more info.
 	License: GPL v2
 */
 
 if (!defined('ABSPATH')) die();
 
-$sfs_version = '20140308';
+$sfs_version = '20140925';
 $sfs_options = get_option('sfs_options');
 
 // i18n
@@ -36,10 +36,10 @@ function sfs_require_wp_version() {
 	$plugin = plugin_basename(__FILE__);
 	$plugin_data = get_plugin_data(__FILE__, false);
 	
-	if (version_compare($wp_version, "3.4", "<")) {
+	if (version_compare($wp_version, "3.7", "<")) {
 		if (is_plugin_active($plugin)) {
 			deactivate_plugins($plugin);
-			$msg =  '<p><strong>' . $plugin_data['Name'] . '</strong> requires WordPress 3.4 or higher, and has been deactivated!</p>';
+			$msg =  '<p><strong>' . $plugin_data['Name'] . '</strong> requires WordPress 3.7 or higher, and has been deactivated!</p>';
 			$msg .= '<p>Please upgrade WordPress and try again.</p><p>Return to the <a href="' .admin_url() . '">WordPress Admin area</a>.</p>';
 			wp_die($msg);
 		}
@@ -87,7 +87,7 @@ if (isset($_GET['activate']) && $_GET['activate'] == 'true') {
 function sfs_clean($string) {
 	$string = trim($string); 
 	$string = strip_tags($string);
-	$string = htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+	$string = htmlspecialchars($string, ENT_QUOTES, get_option('blog_charset'));
 	$string = str_replace("\n", "", $string);
 	$string = trim($string); 
 	return $string;
@@ -316,6 +316,7 @@ function sfs_add_defaults() {
 			'sfs_strict_stats'        => 0,
 			'sfs_custom_key'          => 'custom_key',
 			'sfs_custom_value'        => 'custom_value',
+			'sfs_ignore_bots'         => 0,
 			'sfs_custom_styles'       => '.sfs-subscriber-count { width: 88px; overflow: hidden; height: 26px; color: #424242; font: 9px Verdana, Geneva, sans-serif; letter-spacing: 1px; }
 .sfs-count { width: 86px; height: 17px; line-height: 17px; margin: 0 auto; background: #ccc; border: 1px solid #909090; border-top-color: #fff; border-left-color: #fff; }
 .sfs-count span { display: inline-block; height: 11px; line-height: 12px; margin: 2px 1px 2px 2px; padding: 0 2px 0 3px; background: #e4e4e4; border: 1px solid #a2a2a2; border-bottom-color: #fff; border-right-color: #fff; }
@@ -365,6 +366,9 @@ function sfs_validate_options($input) {
 
 	if (!isset($input['default_options'])) $input['default_options'] = null;
 	$input['default_options'] = ($input['default_options'] == 1 ? 1 : 0);
+	
+	if (!isset($input['sfs_ignore_bots'])) $input['sfs_ignore_bots'] = null;
+	$input['sfs_ignore_bots'] = ($input['sfs_ignore_bots'] == 1 ? 1 : 0);
 
 	if (!isset($input['sfs_tracking_method'])) $input['sfs_tracking_method'] = null;
 	if (!array_key_exists($input['sfs_tracking_method'], $sfs_tracking_method)) $input['sfs_tracking_method'] = null;
@@ -1072,6 +1076,19 @@ function sfs_render_form() {
 											</em>
 										</td>
 									</tr>
+									
+									<tr>
+										<th scope="row"><label class="description" for="sfs_options[sfs_ignore_bots]"><?php _e('Ignore bots?', 'sfs'); ?></label></th>
+										<td><input name="sfs_options[sfs_ignore_bots]" type="checkbox" value="1" <?php if (isset($sfs_options['sfs_ignore_bots'])) checked('1', $sfs_options['sfs_ignore_bots']); ?> /> 
+											<em>
+												<?php _e('Check this box to ignore feed requests from the most common bots/spiders. The bot list is located in tracker.php and may be filtered via the sfs_filter_bots hook. 
+												Note: this will result in a more accurate reporting of feed stats; however, if you have been using SFS for awhile, you will notice the feed count decrease. 
+												Tip: after changing this option, click the &ldquo;Clear the cache&rdquo; link below to reset the cache. Default setting: off (unchecked).', 'sfs'); ?>
+											</em>
+										</td>
+									</tr>
+									
+									
 								</table>
 							</div>
 							<div class="sfs-table">

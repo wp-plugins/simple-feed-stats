@@ -8,9 +8,9 @@ Author URI: http://monzilla.biz/
 Author: Jeff Starr
 Contributors: specialk
 Donate link: http://m0n.co/donate
-Requires at least: 3.4
-Tested up to: 3.8
-Version: 20140308
+Requires at least: 3.7
+Tested up to: 4.0
+Version: 20140925
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -116,6 +116,14 @@ To upgrade, simply upload the new version and you should be good to go.
 Screenshots and more info available at the [SFS Homepage](http://perishablepress.com/simple-feed-stats/).
 
 == Changelog ==
+
+= 20140925 =
+
+* Tested on latest version of WordPress (4.0)
+* Increased min-version requirement to WP 3.7
+* Replaced 'UTF-8' with get_option('blog_charset') in sfs_clean()
+* Added option to ignore the most common bots (googlebot, bingbot, et al)
+* Updated i18n mo/po templates
 
 = 20140308 =
 

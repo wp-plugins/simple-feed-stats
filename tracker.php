@@ -18,6 +18,11 @@ function sfs_cleaner($string) {
 	return $string;
 }
 
+function sfs_ignore_bots() {
+	$bots = array('googlebot', 'googleproducer', 'google-site-verification', 'google-test', 'baidu', 'bingbot', 'bingpreview', 'msnbot', 'yandex', 'sosospider', 'sosoimagespider', 'exabot', 'sogou', 'facebookexternalhit', 'feedfetcher-google');
+	return apply_filters('sfs_filter_bots', $bots);
+}
+
 if (isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])) {
 	$string = array();
 	$params = array();
@@ -58,6 +63,8 @@ if (isset($params['sfs_tracking']) && !empty($params['sfs_tracking'])) {
 	if ($options['sfs_tracking_method'] == 'sfs_custom_tracking') $tracking = 'custom';
 	if ($options['sfs_tracking_method'] == 'sfs_alt_tracking')    $tracking = 'alt';
 	if ($options['sfs_tracking_method'] == 'sfs_open_tracking')   $tracking = 'open';
+	
+	if ($options['sfs_ignore_bots'] && preg_match('/'. implode('|', sfs_ignore_bots()) .'/i', $agent)) exit;
 	
 	$table = $wpdb->prefix . 'simple_feed_stats';
 	$wpdb->insert($table, array(
