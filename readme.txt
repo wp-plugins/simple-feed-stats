@@ -4,15 +4,17 @@ Plugin Name: Simple Feed Stats
 Plugin URI: http://perishablepress.com/simple-feed-stats/
 Description: Tracks your feeds, adds custom content, and displays your feed statistics on your site.
 Tags: feed, feeds, stats, statistics, feedburner, tracking, subscribers
-Author URI: http://monzilla.biz/
 Author: Jeff Starr
-Contributors: specialk
+Author URI: http://monzilla.biz/
 Donate link: http://m0n.co/donate
-Requires at least: 3.7
-Tested up to: 4.0
-Version: 20140925
+Contributors: specialk
+Requires at least: 3.8
+Tested up to: 4.1
 Stable tag: trunk
-License: GPLv2 or later
+Version: 20150317
+Text Domain: sfs
+Domain Path: /languages/
+License: GPL v2 or later
 
 Simple Feed Stats makes it easy to track your feeds, add custom content, and display your feed statistics on your site.
 
@@ -105,6 +107,11 @@ After performing these steps, your "Current Feed Stats" and "Total Feed Stats" s
 
 To update your feed stats at any time (without waiting for the automatic 12-hour interval), click the "clear cache" link in the "Tools and Options" settings panel.
 
+Note: this plugin uses WP Cron functionality to store feed data. Unfortunately, not all hosts/servers support WP Cron (e.g., Media Temple dv servers). If this is the case with your server, the total number of subscribers will not change from day to day. Fortunately there are a couple of workarounds/solutions:
+
+* Click the "Clear cache" button (located in the plugin settings) once or twice per day
+* Use a [free cron service](https://www.setcronjob.com/) to request manually the `wp-cron.php` file once or twice per day
+
 See the plugin settings page for more infos.
 
 == Upgrade Notice ==
@@ -116,6 +123,20 @@ To upgrade, simply upload the new version and you should be good to go.
 Screenshots and more info available at the [SFS Homepage](http://perishablepress.com/simple-feed-stats/).
 
 == Changelog ==
+
+= 20150317 =
+
+* Tested with latest version of WP (4.1)
+* Increased minimum version to WP 3.8
+* Added $sfs_wp_vers for version check
+* Streamline/fine-tune plugin code
+* Added Text Domain and Domain Path to file header
+* Added alert panel in plugin setttings
+* Replaced __FILE__ with page slug for settings URL
+* Added UTF-8 as default for get_option() in htmlspecialchars()
+* Plugin now removes scheduled cron event on uninstall
+* Now scheduling cron event only on plugin activation
+* Replaced default .mo/.po templates with .pot template
 
 = 20140925 =
 
@@ -233,6 +254,11 @@ To ask a question, visit the [SFS Homepage](http://perishablepress.com/simple-fe
 
 == Donations ==
 
-I created this plugin with love for the WP community. To show support, consider purchasing one of my books: [The Tao of WordPress](http://wp-tao.com/), [Digging into WordPress](http://digwp.com/), or [.htaccess made easy](http://htaccessbook.com/).
+I created this plugin with love for the WP community. To show support, you can [make a donation](http://m0n.co/donate) or purchase one of my books: 
+
+* [The Tao of WordPress](http://wp-tao.com/)
+* [Digging into WordPress](http://digwp.com/)
+* [.htaccess made easy](http://htaccessbook.com/)
+* [WordPress Themes In Depth](http://wp-tao.com/wordpress-themes-book/)
 
 Links, tweets and likes also appreciated. Thanks! :)
