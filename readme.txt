@@ -107,10 +107,10 @@ After performing these steps, your "Current Feed Stats" and "Total Feed Stats" s
 
 To update your feed stats at any time (without waiting for the automatic 12-hour interval), click the "clear cache" link in the "Tools and Options" settings panel.
 
-Note: this plugin uses WP Cron functionality to store feed data. Unfortunately, not all hosts/servers support WP Cron (e.g., Media Temple dv servers). If this is the case with your server, the total number of subscribers will not change from day to day. Fortunately there are a couple of workarounds/solutions:
+Also, this plugin uses WP Cron functionality to store feed data. Unfortunately, not all hosts/servers support WP Cron (e.g., Media Temple dv servers). If this is the case with your server, the total number of subscribers will not change from day to day. Fortunately there are a couple of workarounds/solutions:
 
 * Click the "Clear cache" button (located in the plugin settings) once or twice per day
-* Use a [free cron service](https://www.setcronjob.com/) to request manually the `wp-cron.php` file once or twice per day
+* Use a [free cron service](https://www.setcronjob.com/) to request manually `wp-cron.php` once or twice per day
 
 See the plugin settings page for more infos.
 
