@@ -25,7 +25,7 @@ Simple Feed Stats makes it easy to track your feeds, add custom content, and dis
 **Features**
 
 * Dashboard widget - provides quick overview of your feed stats
-* Custom feed content - embellish your feed with custom graphics, markup, &amp; text content
+* Custom feed content - embellish your feed with graphics, markup &amp; text
 * Custom feed count - display any number or text for your feed count
 * Custom CSS - use your own styles to customize your feed stats
 * Shortcodes and template tags to display daily, total, RSS2, and comment stats
